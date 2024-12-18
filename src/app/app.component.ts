@@ -4,6 +4,7 @@ import { ApiService } from './Services/Api.service';
 import { Movie } from './Models/Movie';
 import { CommonModule } from '@angular/common';
 import { MovieCardComponent } from "./Components/MovieCard/MovieCard.component";
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,19 +17,25 @@ import { MovieCardComponent } from "./Components/MovieCard/MovieCard.component";
 })
 export class AppComponent {
   public movies! : Movie[];
+  public moviesSoftwawe! : Movie[];
+  public moviesLaws! : Movie[];
+  public moviesMedical! : Movie[];
+  public moviesArchitec! : Movie[];
   title = 'uceflix';
   constructor(private apiService : ApiService){
 
   }
 
-  getPelis(){
-    this.apiService.GetMovies().subscribe((response) => {
-      this.movies = response.results;
-    });
+  async getPelisBySearch(search: string): Promise<Movie[]>{
+    const data = await lastValueFrom(this.apiService.GetMoviewBySearch(search));
+    const response = data.results; 
+    return response;
   }
 
-  ngOnInit(){
-    this.getPelis();
-
+  async ngOnInit(){
+    this.moviesSoftwawe = await this.getPelisBySearch("software");
+    this.moviesLaws = await this.getPelisBySearch("leyes");
+    this.moviesMedical = await this.getPelisBySearch("medicina");
+    this.moviesArchitec = await this.getPelisBySearch("architec");
   }
 }

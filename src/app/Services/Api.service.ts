@@ -23,4 +23,14 @@ export class ApiService {
     return this.http.get<{results: Movie[]}>(this.apiUrl, { headers});
   }
 
+  GetMoviewBySearch(query:string): Observable<{results: Movie[]}>{
+    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+      'accept': 'application/json'
+    });
+    console.log(url);
+    return this.http.get<{results: Movie[]}>(url, { headers});
+  }
+
 }
