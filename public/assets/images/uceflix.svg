@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 812.81 136.85">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #49b48b;
+      }
+
+      .cls-2 {
+        font-family: Poppins-SemiBold, Poppins;
+        font-size: 161px;
+        font-weight: 600;
+      }
+
+      .cls-3 {
+        fill: #1e1e1e;
+      }
+    </style>
+  </defs>
+  <text class="cls-2" transform="translate(90.02 131.44)"><tspan class="cls-3" x="0" y="0">UCE</tspan><tspan class="cls-1" x="321.51" y="0">FLIX</tspan></text>
+</svg>

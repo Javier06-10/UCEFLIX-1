@@ -1,0 +1,26 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Movie } from '../Models/Movie';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+  private apiUrl = 'https://api.themoviedb.org/3/discover/movie';
+  private token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGZkZGIwY2UzMzY4NTAwN2Q3OGM4YzVlNDJmNjlmOCIsIm5iZiI6MTY3NzI4MjM2My43NDg5OTk4LCJzdWIiOiI2M2Y5NGMzYjg0ZjI0OTAwOGRhZmI1NmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.13dZngHdNRIZkse7s2hx0a9nD5uQaVKPwzrgNbP4hWw';
+
+  constructor(private http: HttpClient) { 
+
+  }
+
+  GetMovies(): Observable<{results: Movie[]}>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+      'accept': 'application/json'
+    });
+
+    return this.http.get<{results: Movie[]}>(this.apiUrl, { headers});
+  }
+
+}
