@@ -15,7 +15,7 @@ export class ScrollCardHorizontalComponent {
   public movies! : Movie[];
 
   @Input()
-  public idScroll!: string;
+  public idScroll! : string;
 
   scrollLeft() {
     const scrollContainer = document.getElementById(this.idScroll);
@@ -39,6 +39,6 @@ export class ScrollCardHorizontalComponent {
   }
 
   ngOnInit(){
-    console.log(this.movies);
+
   }
 }

@@ -51,25 +51,16 @@
       </div>
       <div>
         <div class="d-block">
-          <input type="text" class="outline-none border rounded-start-pill outline-none px-3 py-2" placeholder="Buscar pelicula..."> 
-          <button class="px-3 py-2 border border-start-0 rounded-end-pill"><i class="bi bi-search"></i></button>  
+          <input [formControl]="searchform" type="text" class="outline-none border rounded-start-pill outline-none px-3 py-2" placeholder="Buscar pelicula..."> 
+          <button (click)="navigateToSearch()" class="px-3 py-2 border border-start-0 rounded-end-pill"><i class="bi bi-search"></i></button>  
         </div>
       </div>
   </div>
 </div>
 
-<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Ingenieria de software</label>
-<app-scroll-card-horizontal idScroll="moviesSoftwawe" [movies]="moviesSoftwawe"/>
-
-<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Medicina</label>
-<app-scroll-card-horizontal idScroll="moviesMedical" [movies]="moviesMedical"/>
-
-<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Derecho</label>
-<app-scroll-card-horizontal idScroll="moviesLaws" [movies]="moviesLaws"/>
-
-<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Arquitectura</label>
-<app-scroll-card-horizontal idScroll="moviesArchitec" [movies]="moviesArchitec"/>
-<router-outlet />
+<router-outlet>
+  
+</router-outlet>
 
 <style>
   .navbar-decorator{

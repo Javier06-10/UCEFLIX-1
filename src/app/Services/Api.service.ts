@@ -29,7 +29,6 @@ export class ApiService {
       'Authorization': `Bearer ${this.token}`,
       'accept': 'application/json'
     });
-    console.log(url);
     return this.http.get<{results: Movie[]}>(url, { headers});
   }
 

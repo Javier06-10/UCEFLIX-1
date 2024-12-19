@@ -1,41 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ApiService } from './Services/Api.service';
-import { Movie } from './Models/Movie';
+import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MovieCardComponent } from "./Components/MovieCard/MovieCard.component";
-import { lastValueFrom } from 'rxjs';
-import { ScrollCardHorizontalComponent } from './Components/ScrollCardHorizontal/ScrollCardHorizontal.component';
-
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, 
-    CommonModule, 
-    ScrollCardHorizontalComponent],
+    CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  public movies! : Movie[];
-  public moviesSoftwawe! : Movie[];
-  public moviesLaws! : Movie[];
-  public moviesMedical! : Movie[];
-  public moviesArchitec! : Movie[];
+  searchform = new FormControl('');
+
   title = 'uceflix';
-  constructor(private apiService : ApiService){
+  constructor(private router: Router){}
 
-  }
-
-  async getPelisBySearch(search: string): Promise<Movie[]>{
-    const data = await lastValueFrom(this.apiService.GetMoviewBySearch(search));
-    const response = data.results; 
-    return response;
-  }
-
-  async ngOnInit(){
-    this.moviesSoftwawe = await this.getPelisBySearch("software");
-    this.moviesLaws = await this.getPelisBySearch("leyes");
-    this.moviesMedical = await this.getPelisBySearch("medicina");
-    this.moviesArchitec = await this.getPelisBySearch("architec");
+  navigateToSearch(){
+    // Navegar a una ruta temporal (sin cambiar la URL real)
+    this.router.navigateByUrl('/empty', { skipLocationChange: true }).then(() => {
+      // Luego, navegar nuevamente a la misma ruta actual
+      this.router.navigate([`search/${this.searchform.value}`]);
+    });
   }
 }
