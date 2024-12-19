@@ -1,0 +1,44 @@
+<div class="movie-detail-container">
+    <!-- Póster de la película -->
+    <div class="movie-poster">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        [alt]="movie.title"
+        class="poster-img"
+      />
+    </div>
+  
+    <!-- Detalles de la película -->
+    <div class="movie-info">
+      <h1>{{ movie.title }} <span>({{ movie.release_date | date: 'yyyy' }})</span></h1>
+      <p class="rating">⭐ {{ movie.vote_average * 10 | number:'1.0-0' }}%</p>
+      <p class="release-date">{{ movie.release_date | date: 'MM/dd/yyyy' }}</p>
+      <p class="genres">
+        {{ movie.genre_ids.join(', ') }}
+      </p>
+      <p class="overview">
+        <strong>Overview:</strong> {{ movie.overview }}
+      </p>
+      <div class="credits">
+        <p><strong>Director:</strong> Jake Kasdan</p>
+        <p><strong>Screenplay:</strong> Chris Morgan</p>
+        <p><strong>Story:</strong> Hiram Garcia</p>
+      </div>
+    </div>
+  
+    <!-- Elenco principal -->
+    <div class="movie-cast" *ngIf="movie.cast && movie.cast.length > 0">
+        <h2>Top Billed Cast</h2>
+        <div class="cast-list">
+          <div class="cast-member" *ngFor="let actor of movie.cast">
+            <img
+              [src]="'https://image.tmdb.org/t/p/w500' + actor.profile_path"
+              [alt]="actor.name"
+            />
+            <p><strong>{{ actor.name }}</strong></p>
+            <p>{{ actor.character }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
