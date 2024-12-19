@@ -1,0 +1,21 @@
+#movieScrollContainer {
+  scroll-behavior: smooth;
+  overflow-x: auto; 
+  white-space: nowrap; 
+  padding: 10px; 
+}
+
+button {
+  z-index: 10; 
+  opacity: 0.0;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.8; 
+} 
+
+
+button:focus {
+  border: 0px; 
+} 

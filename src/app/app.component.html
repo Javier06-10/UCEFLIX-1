@@ -41,11 +41,12 @@
     </a>
   </div>
 
+
   <div class="d-flex mx-auto justify-content-around aling-items-center mt-2">
       <div class="">
         <ul class="navbar-nav d-flex flex-row gap-3">
-          <li class="nav-item"><a class="nav-link" href="">Mi Lista</a></li>
-          <li class="nav-item"><a class="nav-link" href="">Administrador</a></li>
+          <li class="nav-item"><a class="hover navbar-decorator nav-link text-secondary" href=""><i class="bi bi-film"></i> Mi Lista</a></li>
+          <li class="nav-item"><a class="hover navbar-decorator nav-link text-secondary" href=""><i class="bi bi-person-fill-lock"></i> Administrador</a></li>
         </ul>
       </div>
       <div>
@@ -57,45 +58,25 @@
   </div>
 </div>
 
-<!-- Peliculas Software Carrera -->
-<div class="container-fluid">
-  <label class="my-3 fs-3 fw-bold">Software Movie</label>
-  <div class="row">
-    <ng-container *ngFor="let movie of moviesSoftwawe">
-      <app-movie-card 
-        class="col-2 pb-4" 
-        *ngIf="movie.poster_path" 
-        [movie]="movie">
-      </app-movie-card>
-    </ng-container>
-  </div>
-</div>
+<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Ingenieria de software</label>
+<app-scroll-card-horizontal idScroll="moviesSoftwawe" [movies]="moviesSoftwawe"/>
 
-<!-- Peliculas Medicina Carrera -->
-<div class="container-fluid">
-  <label class="my-3 fs-3 fw-bold">Peliculas sobre medicina</label>
-  <div class="row">
-    <ng-container *ngFor="let movie of moviesMedical">
-      <app-movie-card 
-        class="col-2 pb-4" 
-        *ngIf="movie.poster_path" 
-        [movie]="movie">
-      </app-movie-card>
-    </ng-container>
-  </div>
-</div>
+<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Medicina</label>
+<app-scroll-card-horizontal idScroll="moviesMedical" [movies]="moviesMedical"/>
 
-<!-- Peliculas Leyes Carrera -->
-<div class="container-fluid">
-  <label class="my-3 fs-3 fw-bold">Peliculas sobre derecho</label>
-  <div class="row">
-    <ng-container *ngFor="let movie of moviesLaws">
-      <app-movie-card 
-        class="col-2 pb-4" 
-        *ngIf="movie.poster_path" 
-        [movie]="movie">
-      </app-movie-card>
-    </ng-container>
-  </div>
-</div>
+<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Derecho</label>
+<app-scroll-card-horizontal idScroll="moviesLaws" [movies]="moviesLaws"/>
+
+<label class="fs-3 fw-semibold my-3 mx-3">Pelicula sobre la carrera de Arquitectura</label>
+<app-scroll-card-horizontal idScroll="moviesArchitec" [movies]="moviesArchitec"/>
 <router-outlet />
+
+<style>
+  .navbar-decorator{
+    transition: cubic-bezier(.17,.67,.93,.73);
+  }
+  .navbar-decorator:hover{
+    scale: 101%;
+    color: #089c5f !important;
+  }
+</style>

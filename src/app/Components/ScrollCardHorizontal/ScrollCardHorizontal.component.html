@@ -1,0 +1,28 @@
+<div class="position-relative">
+  <!-- Contenedor con overflow horizontal -->
+  <div [id]="idScroll" class="d-flex overflow-x-hidden">
+    <ng-container *ngFor="let movie of movies">
+      <app-movie-card
+        *ngIf="movie.poster_path"
+        [movie]="movie"
+        class="col-2 pb-4"
+      ></app-movie-card>
+    </ng-container>
+  </div>
+
+  <!-- Botones de desplazamiento -->
+  <button
+    style="outline: none;"
+    class="btn h-100 py-4 fs-3 bg-white outline-none position-absolute top-50 start-0 translate-middle-y"
+    (click)="scrollLeft()"
+  >
+    <i class="bi bi-arrow-left"></i>
+  </button>
+  <button
+    style="outline: none;"
+    class="btn h-100 py-4 fs-3 bg-white  outline-none position-absolute top-50 end-0 translate-middle-y"
+    (click)="scrollRight()"
+  >
+    <i class="bi bi-arrow-right"></i>
+  </button>
+</div>

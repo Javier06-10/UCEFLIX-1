@@ -5,13 +5,13 @@ import { Movie } from './Models/Movie';
 import { CommonModule } from '@angular/common';
 import { MovieCardComponent } from "./Components/MovieCard/MovieCard.component";
 import { lastValueFrom } from 'rxjs';
+import { ScrollCardHorizontalComponent } from './Components/ScrollCardHorizontal/ScrollCardHorizontal.component';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, 
     CommonModule, 
-    MovieCardComponent, 
-    MovieCardComponent],
+    ScrollCardHorizontalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
